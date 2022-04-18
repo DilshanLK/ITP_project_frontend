@@ -2,7 +2,7 @@ import React from 'react';
 
 const CustomerHomePage = () => {
   return(
-    <div>Home page</div>
+    <h1 style={{textAlign: 'center', paddingTop: 20}}>Home page</h1>
   )
 }
 

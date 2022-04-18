@@ -13,13 +13,13 @@ axiosApi.interceptors.response.use(
   (error) => Promise.reject(error)
 );
 
-// function bindToken() {
-//   const token = localStorage.getItem("TOKEN");
-//   axiosApi.defaults.headers.common["Authorization"] = "Bearer " + token;
-// }
+function bindToken() {
+  const token = localStorage.getItem("TOKEN");
+  axiosApi.defaults.headers.common["Authorization"] = "Bearer " + token;
+}
 
 export async function get(url, config = {}) {
-  // bindToken();
+  bindToken();
 
   return await axiosApi
     .get(url, { ...config })
@@ -27,7 +27,7 @@ export async function get(url, config = {}) {
 }
 
 export async function post(url, data, config = {}) {
-  // bindToken();
+  bindToken();
 
   return axiosApi
     .post(url, { ...data }, { ...config })
@@ -35,7 +35,7 @@ export async function post(url, data, config = {}) {
 }
 
 export async function put(url, data, config = {}) {
-  // bindToken();
+  bindToken();
 
   return axiosApi
     .put(url, { ...data }, { ...config })
@@ -43,7 +43,7 @@ export async function put(url, data, config = {}) {
 }
 
 export async function del(url, config = {}) {
-  // bindToken();
+  bindToken();
 
   return axiosApi.delete(url, { ...config }).then((response) => response.data);
 }

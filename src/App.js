@@ -8,26 +8,45 @@ import Login from "./pages/Login/Login";
 import CustomerHomePage from './pages/Home/Customer/CustomerHomePage';
 import CustomerMyProfile from './pages/MyProfile/CustomerMyProfile';
 import RegisterPage from './pages/Register/RegisterPage';
+import {
+  Switch,
+  useLocation,
+  BrowserRouter as Router,
+  withRouter,
+} from "react-router-dom";
+import { authRoutes, userRoutes } from "./routes/allRoutes";
+import Authmiddleware from "./routes/middleware/Authmiddleware";
+import NonAuthLayout from "./layouts/NonAuthLayout";
+import AuthLayout from "./layouts/AuthLayout";
+
 
 function App() {
   return (
     <Fragment>
-        <MainHeader/>
-        <Route path="/products">
-            <Products/>
-        </Route>
-      <Route path="/login">
-            <Login/>
-      </Route>
-      <Route path="/register">
-            <RegisterPage/>
-      </Route>
-      <Route path="/home-customer">
-            <CustomerHomePage/>
-      </Route>
-      <Route path="/my-profile">
-            <CustomerMyProfile/>
-      </Route>
+      <Switch>
+        {authRoutes.map((route, idx) => (
+          <Authmiddleware
+            path={route.path}
+            layout={NonAuthLayout}
+            component={route.component}
+            key={idx}
+            isAuthProtected={false}
+            type={"ALL"}
+          />
+        ))}
+
+        {userRoutes.map((route, idx) => (
+          <Authmiddleware
+            path={route.path}
+            layout={AuthLayout}
+            component={route.component}
+            key={idx}
+            isAuthProtected={false}
+            type={"USER"}
+            exact
+          />
+        ))}
+      </Switch>
     </Fragment>
   );
 }

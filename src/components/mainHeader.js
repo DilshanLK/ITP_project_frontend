@@ -14,11 +14,11 @@ const MainHeader = () => {
                     {/*    <NavLink activeClassName={classes.active} to="/products">Products</NavLink>*/}
                     {/*</li>*/}
                     <li>
-                        <NavLink activeClassName={classes.active} to="/my-profile">My profile</NavLink>
+                        <NavLink activeClassName={classes.active} to="/customer-my-profile">My profile</NavLink>
                     </li>
-                  <li>
-                        <NavLink activeClassName={classes.active} to="/my-profile">Logout</NavLink>
-                    </li>
+                  {/*<li>*/}
+                  {/*      <NavLink activeClassName={classes.active} to="/my-profile">Logout</NavLink>*/}
+                  {/*  </li>*/}
                 </ul>
             </nav>
         </header>

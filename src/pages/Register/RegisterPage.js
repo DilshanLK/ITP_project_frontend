@@ -7,6 +7,8 @@ import PasswordInput from '../../components/PasswordInputField/PasswordInput';
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import {post} from '../../helpers/api_helper';
+import {register} from '../../redux/actions/userActions';
+import { useDispatch } from "react-redux";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('')
@@ -16,6 +18,8 @@ const RegisterPage = () => {
   const [birthday, setBirthday] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+
+  const dispatch = useDispatch();
 
   const handleRegisterButtonClick = async () => {
     if (!email) {
@@ -52,19 +56,15 @@ const RegisterPage = () => {
 
   //  API calls here
 
-    try {
-      const res = await post("user/signup", {
-        email,
-        name,
-        phone,
-        address,
-        birthday,
-        password,
-      });
-    } catch (e) {
-      console.log(e)
-    }
 
+    dispatch(register(name, email, password, phone, address, birthday));
+
+    setEmail('')
+    setName('')
+    setPassword('')
+    setPhone('')
+    setAddress('')
+    setBirthday('')
   }
 
   return(
@@ -108,7 +108,10 @@ const RegisterPage = () => {
                 </div>
                 <div style={{fontSize: 10, textAlign: 'center', paddingTop: 12}}>I accept the terms and conditions and proceed with the registration process</div>
                 <div className='mt-4' style={{display:"flex", justifyContent: 'center'}}>
-                  <button onClick={() => handleRegisterButtonClick()} className="btn btn-primary">Login button</button>
+                  <button onClick={() => handleRegisterButtonClick()} className="btn btn-primary">Register</button>
+                </div>
+                <div style={{paddingTop:12, textAlign: 'center'}}>
+                  <Link to='/login'>If you already have an account, please login here</Link>
                 </div>
               </CardBody>
             </Card>

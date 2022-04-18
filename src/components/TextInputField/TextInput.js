@@ -5,7 +5,7 @@ const TextInput = (props) => {
   return(
     <div>
       <label>{props.label}</label>
-      <input onChange={(e) => props.onTextChange(e.target.value)} className={styles.input_box} type="text"/>
+      <input disabled={props.disabled} value={props.value} onChange={(e) => props.onTextChange(e.target.value)} className={styles.input_box} type="text"/>
     </div>
   )
 }
