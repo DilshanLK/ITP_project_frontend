@@ -27,8 +27,9 @@ const CustomerMyProfile = () => {
 
   console.log('user', userState)
 
-  const getUser = () => {
-    let res = get(`/user/${userState._id}`)
+  const getUser = async () => {
+    let res = await get(`/user/${userState._id}`)
+    console.log('res', res)
      if (!res.error) {
        setEmail(res.data.email)
        setName(res.data.name)
@@ -66,6 +67,8 @@ const CustomerMyProfile = () => {
       let res = put(`/user/${userState._id}`, payload)
 
       if (!res.error) {
+        history.push("/home-customer");
+
         return toastr.success("Info updated successfully!", "Success!");
       }
     } catch (e) {
