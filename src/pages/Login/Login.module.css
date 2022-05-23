@@ -3,3 +3,7 @@
     /*background-color: #042b5f;*/
 
 }
+
+.backgroundGradient {
+    background-image: linear-gradient(red, yellow);
+}

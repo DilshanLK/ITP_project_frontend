@@ -20,7 +20,8 @@ class NonAuthLayout extends Component {
   //     currentage + " | Skote - Responsive Bootstrap 5 Admin Dashboard"
   // }
   render() {
-    return <React.Fragment>{this.props.children}</React.Fragment>
+    // return <div style={{background: "linear-gradient(#e66465, #9198e5)",height: '100%'}}>{this.props.children}</div>
+    return <div>{this.props.children}</div>
   }
 }
 

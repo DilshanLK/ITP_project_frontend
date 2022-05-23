@@ -8,6 +8,8 @@ import "toastr/build/toastr.min.css";
 import {updateUserInfo, logout} from '../../redux/actions/userActions';
 import {get, put} from '../../helpers/api_helper';
 import history from '../../routes/history';
+import MyProfileBGImage from '../../assets/images/hotels.jpeg'
+import Background from '../../assets/images/home-background.jpeg';
 
 const CustomerMyProfile = () => {
   const [email, setEmail] = useState('')
@@ -96,7 +98,7 @@ const CustomerMyProfile = () => {
   }
 
   return(
-    <div className="account-pages py-5 pt-sm-5" style={{ marginTop: 50}}>
+    <div style={{backgroundImage: `url(${MyProfileBGImage})`, paddingTop: 50}} className="account-pages py-5 pt-sm-5">
       <Container>
         <Row className="justify-content-center">
           <Col md={8} lg={6} xl={5}>

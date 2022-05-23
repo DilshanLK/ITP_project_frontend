@@ -23,7 +23,7 @@ const Authmiddleware = ({
 
     console.log("token", token);
     console.log("isAuthProtected", isAuthProtected);
-
+    console.log("isPeotectedededededededededededede");
     if (isAuthProtected && !token) {
       window.location.replace("/login");
 

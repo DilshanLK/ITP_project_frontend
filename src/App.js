@@ -41,8 +41,8 @@ function App() {
             layout={AuthLayout}
             component={route.component}
             key={idx}
-            isAuthProtected={false}
-            type={"USER"}
+            isAuthProtected={true}
+            type={"ALL"}
             exact
           />
         ))}
